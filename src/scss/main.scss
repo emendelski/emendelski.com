@@ -251,3 +251,28 @@ body {
     }
   }
 }
+
+.small {
+  font-size: .75rem;
+  max-width: 30rem;
+  margin-top: -1rem;
+  line-height: 1.5;
+  color: rgba($primary-color, .75);
+}
+
+.handle {
+
+  &::after {
+    content: "💪🏼";
+    margin-left: .25em;
+    opacity: 0;
+    transition: opacity .25s;
+  }
+
+  &:hover {
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
