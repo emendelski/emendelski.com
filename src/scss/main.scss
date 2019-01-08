@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700");
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(20deg);
+  }
+
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes jump {
+
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+
+  40% {
+    transform: translate3d(0, -15%, 0) scale3d(.85, 1.15, 1);
+  }
+
+  100% {
+    transform: translate3d(0, -30%, 0) scale3d(1.15, .85, 1);
+  }
+}
+
+$primary-color: #fff;
+$secondary-color: #3A484E;
+$tertiary-color: #df6f48;
+
+html {
+  box-sizing: border-box;
+  // overflow: hidden;
+  font-size: 150%;
+
+  @media (min-width: 990px) {
+    font-size: 175%;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 200%;
+  }
+}
+
+body {
+  background: #0F2027;
+  background: /* postcss-gradient */ radial-gradient(
+    circle at bottom left,
+    $secondary-color,
+    ease-in-out,
+    #0F2027
+  );
+  font-family: Rubik, sans-serif;
+  margin: 0;
+  color: $primary-color;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  @media (min-width: 1000px) {
+    padding: 3rem;
+  }
+}
+
+@import "heart";
+
+::selection {
+  background-color: #70163C;
+}
+
+.content {
+
+  .decoration {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    font-style: normal;
+    margin-right: .5em;
+
+    &--box {
+      transform-origin: 50% 100%
+    }
+  }
+
+  > h1 {
+    letter-spacing: .1em;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  > h2 {
+    font-size: 1.125rem;
+    line-height: 1.25;
+    font-weight: 400;
+    margin-top: 0;
+    color: rgba($primary-color, .75);
+    margin-bottom: 2em;
+
+    + h2 {
+      margin-top: -1.75rem;
+    }
+
+    > .more {
+      position: relative;
+      transition: color .25s;
+      padding: 0 .15rem;
+      user-select: none;
+
+      @media (min-width: 1368px) {
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          height: 1.25em;
+          left: 0;
+          width: 0;
+          bottom: 0;
+          z-index: -1;
+          background-color: $tertiary-color;
+          transition: width .25s;
+        }
+
+        &::after {
+          content: "... and this is just a glimpse.";
+          position: absolute;
+          display: block;
+          bottom: 100%;
+          margin-bottom: .25em;
+          left: 0;
+          font-size: .75rem;
+          width: 120%;
+          letter-spacing: -.025em;
+          opacity: 0;
+          transition: opacity .3s;
+          color: $primary-color;
+          padding: 0 .15rem;
+        }
+
+        &:hover {
+          color: $primary-color;
+
+          &::before {
+            width: 100%;
+          }
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  > strong {
+    display: block;
+    font-size: 1.125em;
+    margin-bottom: .25em;
+    letter-spacing: .1em;
+  }
+
+  > p {
+    pointer-events: none;
+    margin-bottom: 0;
+
+    + p {
+      margin-top: .5em;
+    }
+
+    &:hover {
+
+      .decoration--hand {
+        animation: wave .3s infinite;
+      }
+
+      .decoration--box {
+        animation: jump .3s infinite alternate;
+      }
+    }
+  }
+
+  a {
+    color: $tertiary-color;
+    text-decoration: underline;
+    text-decoration-color: $tertiary-color;
+
+    &,
+    & > span {
+      transition: color .25s;
+    }
+
+    > span {
+      color: $primary-color;
+    }
+
+    &:hover,
+    &:focus {
+
+      &,
+      & > span {
+        color: $tertiary-color;
+      }
+    }
+
+    &:focus {
+      outline: 1px dotted currentColor;
+    }
+  }
+
+  > p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  > p > a {
+    display: inline-block;
+    pointer-events: all;
+    margin-left: 0;
+    padding: .25em;
+    position: relative;
+
+    + a {
+      margin-left: 1.25em;
+    }
+
+    + a::before {
+      content: "◽";
+      display: inline-block;
+      position: absolute;
+      left: -1/2 * 1.75em;
+      color: rgba($primary-color, .5);
+    }
+  }
+}

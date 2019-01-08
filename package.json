@@ -1,0 +1,121 @@
+{
+  "name": "webpack-starter-kit",
+  "version": "1.0.0",
+  "description": "Starter Kit for every-day frontend work",
+  "author": "Kamil Mendelski <kontakt@frontlabs.pl>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emendelski/webpack-starter-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emendelski/webpack-starter-kit/issues"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js src",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --content-base previews/ --progress --mode development",
+    "build": "webpack -p --progress --mode production",
+    "deploy": "npm run build && node deploy"
+  },
+  "private": true,
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.4.4",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^4.6.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "file-loader": "^3.0.1",
+    "ftp-deploy": "^2.3.0",
+    "image-webpack-loader": "^4.6.0",
+    "imagemin-webpack-plugin": "^2.4.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "postcss-easing-gradients": "^3.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-airbnb": "0.0.0",
+    "stylelint-order": "^2.0.0",
+    "stylelint-scss": "^3.4.4",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb-base",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "modules": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "es6": true,
+      "jquery": true
+    }
+  },
+  "eslintIgnore": [
+    "./dist/*",
+    "./node_modules/*"
+  ],
+  "stylelint": {
+    "extends": "stylelint-config-airbnb",
+    "rules": {
+      "max-nesting-depth": [
+        4,
+        {
+          "ignore": [
+            "blockless-at-rules"
+          ],
+          "ignoreAtRules": [
+            "include",
+            "media"
+          ]
+        }
+      ],
+      "at-rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "blockless-after-same-name-blockless"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ]
+    }
+  }
+}
