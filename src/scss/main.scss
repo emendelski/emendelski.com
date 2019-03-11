@@ -55,6 +55,7 @@ html {
   }
 }
 
+html,
 body {
   background: #0F2027;
   background: /* postcss-gradient */ radial-gradient(
@@ -63,11 +64,14 @@ body {
     ease-in-out,
     #0F2027
   );
+}
+
+body {
   font-family: Rubik, sans-serif;
   margin: 0;
   color: $primary-color;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1rem;
   display: flex;
   align-items: flex-end;
@@ -90,7 +94,7 @@ body {
     display: inline-block;
     transform-origin: 50% 50%;
     font-style: normal;
-    margin-right: .5em;
+    margin-right: .5rem;
 
     &--box {
       transform-origin: 50% 100%
@@ -101,8 +105,8 @@ body {
     letter-spacing: .1em;
     line-height: 1;
     margin-top: 0;
-    margin-bottom: .5rem;
-    font-size: 2.4rem;
+    margin-bottom: .75rem;
+    font-size: 2.25rem;
     font-weight: 700;
   }
 
@@ -113,6 +117,11 @@ body {
     margin-top: 0;
     color: rgba($primary-color, .75);
     margin-bottom: 2em;
+    max-width: 12rem;
+
+    @media (min-width: 400px) {
+      max-width: none;
+    }
 
     + h2 {
       margin-top: -1.75rem;
@@ -239,15 +248,19 @@ body {
     position: relative;
 
     + a {
-      margin-left: 1.25em;
+      margin-left: 1.5rem;
     }
 
     + a::before {
       content: "◽";
       display: inline-block;
       position: absolute;
-      left: -1/2 * 1.75em;
+      left: -1.5rem;
       color: rgba($primary-color, .5);
+
+      @media (min-width: 768px) {
+        left: -1rem;
+      }
     }
   }
 }
