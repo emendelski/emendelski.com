@@ -179,26 +179,6 @@ body {
     letter-spacing: .1em;
   }
 
-  > p {
-    pointer-events: none;
-    margin-bottom: 0;
-
-    + p {
-      margin-top: .5em;
-    }
-
-    &:hover {
-
-      .decoration--hand {
-        animation: wave .3s infinite;
-      }
-
-      .decoration--box {
-        animation: jump .3s infinite alternate;
-      }
-    }
-  }
-
   a {
     color: $tertiary-color;
     text-decoration: underline;
@@ -224,37 +204,6 @@ body {
 
     &:focus {
       outline: 1px dotted currentColor;
-    }
-  }
-
-  > p {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  > p > a {
-    display: inline-block;
-    pointer-events: all;
-    margin-left: 0;
-    padding: .25em;
-    position: relative;
-
-    + a {
-      margin-left: 1.5rem;
-    }
-
-    + a::before {
-      content: "◽";
-      display: inline-block;
-      position: absolute;
-      left: -1.5rem;
-      color: rgba($primary-color, .5);
-
-      @media (min-width: 768px) {
-        left: -1rem;
-      }
     }
   }
 }
@@ -285,6 +234,58 @@ body {
 
     &::after {
       opacity: 1;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  pointer-events: none;
+  margin-bottom: 0;
+
+  @media (min-width: 600px) {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  + .nav {
+    margin-top: 1em;
+  }
+
+  &:hover {
+
+    .decoration--hand {
+      animation: wave .3s infinite;
+    }
+
+    .decoration--box {
+      animation: jump .3s infinite alternate;
+    }
+  }
+
+  > a {
+    display: inline-block;
+    pointer-events: all;
+    margin-left: 0;
+    padding: .25em;
+    position: relative;
+
+    + a {
+      margin-left: 1.5rem;
+    }
+
+    + a::before {
+      content: "◽";
+      display: inline-block;
+      position: absolute;
+      left: -1.25rem;
+      color: rgba($primary-color, .5);
+
+      @media (min-width: 850px) {
+        left: -1rem;
+      }
     }
   }
 }
