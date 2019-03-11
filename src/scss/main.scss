@@ -94,6 +94,7 @@ body {
     display: inline-block;
     transform-origin: 50% 50%;
     font-style: normal;
+    min-width: 1rem;
     margin-right: .5rem;
 
     &--box {
@@ -186,26 +187,6 @@ body {
     letter-spacing: .1em;
   }
 
-  > p {
-    pointer-events: none;
-    margin-bottom: 0;
-
-    + p {
-      margin-top: .5em;
-    }
-
-    &:hover {
-
-      .decoration--hand {
-        animation: wave .3s infinite;
-      }
-
-      .decoration--box {
-        animation: jump .3s infinite alternate;
-      }
-    }
-  }
-
   a {
     color: $tertiary-color;
     text-decoration: underline;
@@ -233,14 +214,37 @@ body {
       outline: 1px dotted currentColor;
     }
   }
+}
 
-  > p {
-    display: flex;
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  pointer-events: none;
+  margin-bottom: 0;
+
+  @media (min-width: 600px) {
     align-items: center;
-    justify-content: flex-start;
+    flex-direction: row;
   }
 
-  > p > a {
+  + .nav {
+    margin-top: 1em;
+  }
+
+  &:hover {
+
+    .decoration--hand {
+      animation: wave .3s infinite;
+    }
+
+    .decoration--box {
+      animation: jump .3s infinite alternate;
+    }
+  }
+
+  > a {
     display: inline-block;
     pointer-events: all;
     margin-left: 0;
@@ -255,7 +259,7 @@ body {
       content: "◽";
       display: inline-block;
       position: absolute;
-      left: -1.5rem;
+      left: -1.25rem;
       color: rgba($primary-color, .5);
 
       @media (min-width: 768px) {
