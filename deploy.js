@@ -7,7 +7,7 @@ const ftpDeploy = new FtpDeploy();
 let config = {};
 
 const args = process.argv.slice(2);
-const method = args[0] || 'theme';
+const method = args[0] || 'all';
 
 /* Should be filled before deploy */
 const basicConfig = {
@@ -15,47 +15,17 @@ const basicConfig = {
   password: process.env.FTP_PASS,
   host: process.env.FTP_HOST,
   port: 21,
-  localRoot: __dirname,
+  localRoot: __dirname + '/dist',
   remoteRoot: process.env.FTP_REMOTE,
   deleteRemote: false,
 };
 
 const configInclude = {
-  theme: {
-    include: [
-      '**/*.php',
-      'assets/**/*',
-      'static/**/*',
-      'screenshot.png',
-      'style.css'
-    ],
-    exclude: [
-      '.git/**/*',
-      'node_modules/**/*',
-      'src/**/*',
-      'vendor/**/*',
-    ],
-  },
-  vendor: {
-    include: [
-      'vendor/**/*',
-    ],
-    exclude: []
-  },
   all: {
-    deleteRemote: true,
     include: [
-      '**/*.php',
-      'assets/**/*',
-      'static/**/*',
-      'vendor/**/*',
-      'screenshot.png',
-      'style.css'
+      '**/*',
     ],
     exclude: [
-      '.git/**/*',
-      'node_modules/**/*',
-      'src/**/*',
     ]
   },
 }
